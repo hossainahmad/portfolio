@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState, useSyncExternalStore } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { ParallaxBackdrop } from "@/components/parallax-backdrop";
 import { Container } from "@/components/ui/container";
 import { Corners } from "@/components/ui/corners";
 
@@ -60,17 +61,17 @@ function useTypewriter(words: string[], enabled: boolean) {
 }
 
 export function Hero() {
+  const heroRef = useRef<HTMLElement>(null);
   const prefersReducedMotion = usePrefersReducedMotion();
   const typed = useTypewriter(ROLES, !prefersReducedMotion);
   const role = prefersReducedMotion ? ROLES[0] : typed;
 
   return (
-    <section className="relative overflow-hidden border-b border-line">
-      <div
-        aria-hidden="true"
-        className="blueprint-grid mask-fade-b absolute inset-0"
-      />
-      <div aria-hidden="true" className="hero-glow absolute inset-0" />
+    <section
+      ref={heroRef}
+      className="relative overflow-hidden border-b border-line"
+    >
+      <ParallaxBackdrop targetRef={heroRef} />
       <p
         aria-hidden="true"
         className="absolute right-8 top-1/2 hidden -translate-y-1/2 rotate-90 font-mono text-[10px] uppercase tracking-[0.4em] text-ink-faint lg:block"
@@ -122,7 +123,7 @@ export function Hero() {
 
           <p className="mt-12 font-mono text-sm text-ink-dim">
             <span className="text-accent">$</span> currently: Assistant
-            Programmer @ Gazipur City Corporation
+            Programmer at Gazipur City Corporation
           </p>
         </div>
       </Container>
