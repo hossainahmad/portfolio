@@ -1,42 +1,72 @@
 @import "tailwindcss";
 
 @theme {
-  /* Palette */
-  --color-paper: #fefae0;
-  --color-paper-raised: #fffbea;
-  --color-forest: #283618;
-  --color-olive: #606c38;
-  --color-caramel: #dda15e;
-  --color-copper: #bc6c25;
-  --color-copper-deep: #a0551b;
+  /* Surfaces — neutral dark */
+  --color-canvas: #0a0a0a;
+  --color-surface: #121212;
+  --color-raised: #191919;
+  --color-line: #242424;
 
-  /* Fonts (wired to next/font variables) */
-  --font-display: var(--font-fraunces), Georgia, serif;
+  /* Ink */
+  --color-ink: #f4f4f5;
+  --color-ink-dim: #a1a1aa;
+  --color-ink-faint: #6f6f76;
+
+  /* Accent — terminal lime */
+  --color-accent: #a3e635;
+  --color-accent-bright: #bef264;
+
+  /* Fonts */
+  --font-display: var(--font-grotesk), "Inter", system-ui, sans-serif;
   --font-sans: var(--font-inter), system-ui, sans-serif;
   --font-mono: var(--font-jetbrains), ui-monospace, monospace;
 
-  --shadow-warm:
-    0 1px 2px rgb(40 54 24 / 0.06), 0 8px 24px rgb(40 54 24 / 0.08);
+  --shadow-glow:
+    0 0 0 1px rgb(163 230 53 / 0.2), 0 8px 40px rgb(163 230 53 / 0.06);
 }
 
 @layer base {
   body {
-    background-color: var(--color-paper);
-    color: var(--color-forest);
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
   }
 }
 
 ::selection {
-  background: var(--color-copper);
-  color: var(--color-paper);
+  background: var(--color-accent);
+  color: #0a0a0a;
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-copper-deep);
+  outline: 2px solid var(--color-accent);
   outline-offset: 2px;
 }
 
-.dot-grid {
-  background-image: radial-gradient(rgb(96 108 56 / 0.18) 1px, transparent 1px);
-  background-size: 24px 24px;
+/* Architectural layer: major grid every 128px (lime), minor every 32px (white) */
+.blueprint-grid {
+  background-image:
+    linear-gradient(to right, rgb(163 230 53 / 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(163 230 53 / 0.05) 1px, transparent 1px),
+    linear-gradient(to right, rgb(255 255 255 / 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.035) 1px, transparent 1px);
+  background-size:
+    128px 128px,
+    128px 128px,
+    32px 32px,
+    32px 32px;
+}
+
+/* Soft lime glow, anchored above the hero */
+.hero-glow {
+  background: radial-gradient(
+    ellipse 70% 55% at 50% -5%,
+    rgb(163 230 53 / 0.13),
+    transparent 65%
+  );
+}
+
+/* Fades the grid out toward the bottom of a section */
+.mask-fade-b {
+  -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent);
+  mask-image: linear-gradient(to bottom, black 55%, transparent);
 }
