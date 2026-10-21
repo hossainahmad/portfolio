@@ -1,11 +1,6 @@
 import Link from "next/link";
 import type { Project } from "@/lib/projects";
-
-const COVERS = [
-  "from-olive/20 via-caramel/30 to-copper/30",
-  "from-caramel/40 via-copper/25 to-olive/15",
-  "from-olive/30 via-forest/25 to-caramel/30",
-];
+import { Corners } from "@/components/ui/corners";
 
 export function ProjectCard({
   project,
@@ -14,36 +9,46 @@ export function ProjectCard({
   project: Project;
   index: number;
 }) {
+  const fig = String(index).padStart(2, "0");
+
   return (
     <Link
       href={`/work/${project.slug}`}
-      className="group flex flex-col overflow-hidden rounded-2xl border border-forest/10 bg-paper-raised shadow-warm transition-all hover:-translate-y-1 hover:border-copper/60"
+      className="group relative flex flex-col border border-line bg-surface transition-all hover:-translate-y-1 hover:border-accent/60 hover:shadow-glow"
     >
-      <div
-        className={`relative h-36 bg-gradient-to-br ${COVERS[(index - 1) % COVERS.length]}`}
-      >
-        <span className="absolute bottom-2 right-4 font-display text-7xl font-medium text-forest/10">
-          {String(index).padStart(2, "0")}
+      <Corners colorClass="border-ink/10 transition-colors group-hover:border-accent/70" />
+
+      <div className="relative h-36 overflow-hidden border-b border-line bg-raised">
+        <div
+          aria-hidden="true"
+          className="blueprint-grid absolute inset-0 opacity-70"
+        />
+        <span className="absolute left-3 top-2 font-mono text-[10px] uppercase tracking-[0.25em] text-ink-faint">
+          Fig. {fig}
+        </span>
+        <span className="absolute bottom-1 right-3 font-display text-7xl font-medium text-ink/5">
+          {fig}
         </span>
       </div>
+
       <div className="flex flex-1 flex-col p-6">
         <div className="flex flex-wrap gap-2">
           {project.tags.map((tag) => (
             <span
               key={tag}
-              className="rounded-full bg-caramel/20 px-2.5 py-0.5 font-mono text-xs text-forest"
+              className="border border-line px-2 py-0.5 font-mono text-[11px] text-ink-dim"
             >
               {tag}
             </span>
           ))}
         </div>
-        <h3 className="mt-4 font-display text-xl font-medium transition-colors group-hover:text-copper-deep">
+        <h3 className="mt-4 font-display text-xl font-medium text-ink transition-colors group-hover:text-accent">
           {project.title}
         </h3>
-        <p className="mt-2 flex-1 text-sm leading-relaxed text-forest/70">
+        <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-dim">
           {project.summary}
         </p>
-        <p className="mt-4 font-mono text-xs text-olive">
+        <p className="mt-4 font-mono text-xs text-ink-faint">
           {project.year} · {project.role}
         </p>
       </div>
