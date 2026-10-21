@@ -24,9 +24,10 @@ export default function Home() {
     <>
       <Hero />
 
-      <section id="work">
+      <section id="work" className="border-b border-line">
         <Container className="py-20 md:py-28">
           <SectionHeading
+            index="01"
             eyebrow="Selected work"
             title="Things I've built"
             href="/work"
@@ -40,19 +41,24 @@ export default function Home() {
         </Container>
       </section>
 
-      <section className="border-t border-forest/10">
-        <Container className="grid gap-12 py-20 md:grid-cols-2 md:py-28">
-          {SERVICES.map(({ title, body, stack }) => (
-            <div key={title}>
-              <h3 className="font-display text-2xl font-medium tracking-tight">
-                {title}
-              </h3>
-              <p className="mt-3 leading-relaxed text-forest/75">{body}</p>
-              <p className="mt-4 font-mono text-xs uppercase tracking-wider text-olive">
-                {stack}
-              </p>
-            </div>
-          ))}
+      <section id="capabilities">
+        <Container className="py-20 md:py-28">
+          <SectionHeading index="02" eyebrow="Capabilities" title="What I do" />
+          {/* gap-px + bg-line = crisp hairline dividers, like a drawing table */}
+          <div className="grid gap-px border border-line bg-line md:grid-cols-2">
+            {SERVICES.map(({ title, body, stack }, i) => (
+              <div key={title} className="relative bg-canvas p-8 md:p-10">
+                <p className="font-mono text-xs text-accent">SPEC.{i + 1}</p>
+                <h3 className="mt-3 font-display text-2xl font-medium tracking-tight text-ink">
+                  {title}
+                </h3>
+                <p className="mt-3 leading-relaxed text-ink-dim">{body}</p>
+                <p className="mt-6 border-t border-dashed border-line pt-4 font-mono text-xs text-ink-faint">
+                  {stack}
+                </p>
+              </div>
+            ))}
+          </div>
         </Container>
       </section>
     </>

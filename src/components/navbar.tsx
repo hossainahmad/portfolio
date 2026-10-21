@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { GitHubIcon } from "@/components/ui/icons";
+import Image from "next/image";
 
 const NAV = [
   { href: "/work", label: "Work" },
@@ -22,12 +23,18 @@ export function Navbar() {
           className="flex items-center gap-3"
           onClick={() => setOpen(false)}
         >
-          <span className="flex h-9 w-9 items-center justify-center bg-accent font-mono text-sm font-bold text-black">
+          {/* <span className="flex h-9 w-9 items-center justify-center bg-accent font-mono text-sm font-bold text-black">
             HA
           </span>
           <span className="font-display text-lg font-medium text-ink">
             hossain<span className="text-accent">.</span>ahmad
-          </span>
+          </span> */}
+          <Image
+            src="/logo5-remove.png"
+            alt="Hossain Ahmad - Logo"
+            width={250}
+            height={80}
+          ></Image>
         </Link>
 
         <ul className="hidden items-center gap-8 md:flex">
