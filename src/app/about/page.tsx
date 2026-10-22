@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { SITE } from "@/lib/site";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "About",
@@ -210,28 +211,28 @@ export default function AboutPage() {
             Let&rsquo;s draft something worth building.
           </h2>
           <div className="mt-7 flex flex-wrap items-center gap-3">
-            <a
-              href={`mailto:${SITE.email}`}
-              className="border border-accent bg-accent px-5 py-3 font-mono text-xs uppercase tracking-[0.2em] text-canvas transition-colors hover:bg-accent-bright"
+            <Link
+              href="/contact" // ← stays on your site
+              className="inline-flex items-center gap-2 border border-lime bg-lime px-6 py-3 font-mono text-sm uppercase tracking-wider text-ink transition-colors hover:bg-transparent hover:text-lime"
             >
-              {SITE.email}
-            </a>
-            <a
+              Start a project
+            </Link>
+            <Link
               href={SITE.github}
               target="_blank"
               rel="noopener noreferrer"
               className="border border-line px-5 py-3 font-mono text-xs uppercase tracking-[0.2em] text-ink-dim transition-colors hover:border-ink-faint hover:text-ink"
             >
               GitHub ↗
-            </a>
-            <a
+            </Link>
+            <Link
               href={SITE.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               className="border border-line px-5 py-3 font-mono text-xs uppercase tracking-[0.2em] text-ink-dim transition-colors hover:border-ink-faint hover:text-ink"
             >
               LinkedIn ↗
-            </a>
+            </Link>
           </div>
         </section>
       </div>

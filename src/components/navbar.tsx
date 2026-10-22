@@ -10,6 +10,7 @@ import { SITE } from "@/lib/site";
 const NAV = [
   { href: "/work", label: "Work" },
   { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export function Navbar() {
