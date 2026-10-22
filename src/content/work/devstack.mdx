@@ -1,0 +1,35 @@
+---
+title: "DevStack"
+summary: "An interactive tool for developers to explore, compare, and curate their ideal tech stack across frontend, backend, database, mobile, and DevOps ecosystems."
+year: 2026
+order: 3
+cover: "/covers/devstack.png"
+featured: true
+tags: ["React", "TypeScript", "Tailwind"]
+role: "Designer & Developer"
+stack: ["React", "TypeScript", "Tailwind CSS", "DaisyUI", "React Toastify"]
+links:
+  live: "https://devstacktech.netlify.app"
+  repo: "https://github.com/hossainahmad/DevStack"
+---
+
+## The problem
+
+Choosing a stack for a new project means tab-hopping between docs, benchmarks, and opinions. DevStack compresses that exploration into one interface: browse technologies by ecosystem, compare candidates side by side, and curate your selection in a live, sticky "Your Stack" tray until the architecture decision is made.
+
+## What it does
+
+- **Tech stack explorer** — browse tools across frontend, backend, database, mobile, and DevOps
+- **Side-by-side comparison** — select technologies and evaluate them together
+- **Live stack tracking** — a sticky tray organizes everything you've selected, with clear-all and per-item remove
+- **Toast feedback** — React Toastify confirms every action so the state is never invisible
+
+## Architecture as the point
+
+This project was deliberately an exercise in **component discipline**: a navbar, banner, explore section, tech cards, the stack tray, and a footer — each a functional component with a single responsibility. State is lifted deliberately: selection lives at the top, and changes flow down through typed props with callbacks like `onToggleStack` and `onRemoveFromStack`. One-directional data flow, enforced by TypeScript.
+
+## What I learned
+
+- TypeScript earns its keep the moment props and callbacks outnumber components
+- DaisyUI speeds up UI work, but taste still has to come from you
+- Boring, well-factored React is a feature — future me could extend this app in an afternoon

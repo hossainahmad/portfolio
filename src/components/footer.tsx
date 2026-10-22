@@ -20,7 +20,7 @@ export function Footer() {
             href="mailto:hello@hossainahmad.dev" // TODO: real email
             className="bg-accent px-6 py-3 font-medium text-black transition-colors hover:bg-accent-bright"
           >
-            hello@hossainahmad.xyz
+            hello@hossainahmad.dev
           </a>
           <div className="flex gap-5">
             <a

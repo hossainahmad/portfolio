@@ -2,7 +2,7 @@ import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Hero } from "@/components/hero";
 import { ProjectCard } from "@/components/project-card";
-import { projects } from "@/lib/projects";
+import { getAllProjects } from "@/lib/projects";
 
 const SERVICES = [
   {
@@ -18,7 +18,7 @@ const SERVICES = [
 ];
 
 export default function Home() {
-  const featured = projects.filter((p) => p.featured);
+  const featured = getAllProjects().filter((p) => p.featured);
 
   return (
     <>
@@ -34,8 +34,8 @@ export default function Home() {
             linkLabel="All projects"
           />
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {featured.map((project, i) => (
-              <ProjectCard key={project.slug} project={project} index={i + 1} />
+            {featured.map((project) => (
+              <ProjectCard key={project.slug} project={project} />
             ))}
           </div>
         </Container>

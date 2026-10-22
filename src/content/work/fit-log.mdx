@@ -1,0 +1,47 @@
+---
+title: "FitLog"
+summary: "A workout planner with an interactive exercise library, persistent plan and bookmark tracking, and a live metrics dashboard — all state managed with the React Context API."
+year: 2026
+order: 2
+cover: "/covers/fit-log.png"
+featured: true
+tags: ["Next.js", "React", "State"]
+role: "Designer & Developer"
+stack:
+  [
+    "Next.js",
+    "React Context API",
+    "Tailwind CSS",
+    "Lucide React",
+    "localStorage",
+  ]
+links:
+  live: "https://fit-log-wheat-kappa.vercel.app"
+  repo: "https://github.com/hossainahmad/fit-log"
+---
+
+## The problem
+
+Workout information is scattered — one site for exercise instructions, another for calorie estimates, a notes app for today's plan. FitLog consolidates that flow: explore a full exercise catalog, inspect step-by-step details, then plan and track your training without leaving the app.
+
+## What it does
+
+- **Interactive workout library** — search and browse the exercise catalog with visual previews and detail cards
+- **Dynamic routine pages** — step-by-step instructions, equipment requirements, difficulty rankings, and calorie estimates per exercise
+- **Plan and bookmark management** — add workouts to today's schedule or save them for later
+- **Real-time badge counters** — navbar indicators for planned and saved items stay in sync across every page
+- **Persistent metrics dashboard** — total workout duration and calorie expenditure aggregate automatically, persisted across sessions
+
+## Architecture
+
+State lives in a single **React Context** with the app's domain logic: add to plan, save to bookmarks, remove, clear, and the derived metric totals. Components subscribe to slices they need, and the navbar badges update as a _consequence_ of state changes rather than through page-local bookkeeping.
+
+## The challenge worth writing down
+
+Persisting state to **localStorage in a Next.js app has an SSR trap**: the server renders before any browser storage exists, so a naive read during the first render causes hydration mismatches. FitLog handles the first client render explicitly, then hydrates from storage — the difference between a flashing, inconsistent UI and a stable one.
+
+## What I learned
+
+- Context API scales further than people assume when the derived state is designed carefully
+- SSR-safe persistence is a pattern worth memorizing — it shows up in every server-rendered app with client state
+- Small UX details (live counters, skeletons, not-found states) are what make a CRUD app feel like a product

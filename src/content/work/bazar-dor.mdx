@@ -1,0 +1,46 @@
+---
+title: "BazarDor"
+summary: "A full-stack market-price tracker that puts daily prices for essential products in one place — browse by category, compare market ranges, and follow day-to-day changes."
+year: 2026
+order: 1
+cover: "/covers/bazar-dor.png"
+featured: true
+tags: ["Full-Stack", "Auth", "MongoDB"]
+role: "Designer & Developer"
+stack: ["Next.js", "React", "Better Auth", "MongoDB", "Tailwind CSS"]
+links:
+  live: "https://bazar-dor-zeta-steel.vercel.app"
+  repo: "https://github.com/hossainahmad/bazar-dor"
+---
+
+## The problem
+
+If you buy groceries in Bangladesh, you know the drill: the same essential product can cost meaningfully different amounts from market to market, and there is no easy way to check what a fair price looks like before you head out. Prices live in people's heads, in handwritten ledgers, and in word of mouth.
+
+BazarDor is my attempt to fix that — one place where current prices for essential products are collected, organized by category, and comparable across markets, with day-to-day changes visible at a glance.
+
+## What it does
+
+- Browse products with current prices, units, and price-change indicators
+- Filter by category and search by product name
+- Sort prices low-to-high or high-to-low — **including Bengali numerals**
+- View price summaries and market-by-market comparisons per product
+- Create an account, sign in, and update your profile
+- Responsive layouts with loading skeletons and friendly not-found pages
+
+## Stack decisions
+
+- **Next.js App Router** — server components carry the product listing; client components appear only where interaction demands them (filters, search, forms).
+- **Better Auth** — I wanted authentication without dragging a heavyweight dependency into a focused product. Better Auth's API is small and legible, and it covered sign-up, sign-in, and profile updates cleanly.
+- **MongoDB via the Node driver** — products, markets, and prices map naturally to documents, and skipping an ORM kept the data layer transparent.
+- **Tailwind CSS** — one styling system across a growing feature set, with loading skeletons and empty states designed in the same pass as the happy path.
+
+## The challenge I'm proudest of
+
+Price sorting that understands **Bengali numerals (০–৯)**. Most users here read prices in Bengali digits, so the sorter has to treat Bengali and Western numerals as the same numbers before ordering — otherwise "৯৯" sorts away from "99" and the comparison breaks exactly where it matters most.
+
+## What I learned
+
+- Auth is 20% wiring and 80% edge cases — sessions, error states, and profile flows each deserve real attention
+- Data modeling for _comparison_ (many markets → one product view) is a different exercise than modeling for a single CRUD page
+- Shipping to a real URL changes how you think about what "done" means
