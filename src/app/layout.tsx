@@ -35,6 +35,13 @@ export default function RootLayout({
       lang="en"
       className={`${grotesk.variable} ${inter.variable} ${jetbrains.variable}`}
     >
+      <head>
+        <script
+          defer
+          src="https://cloud.umami.is/script.js"
+          data-website-id="e06627bd-e2fe-4d0f-a1ab-38a01eae012c"
+        ></script>
+      </head>
       <body className="font-sans antialiased">
         <a
           href="#main"

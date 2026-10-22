@@ -115,7 +115,7 @@ export function Hero() {
               View my work →
             </a>
             <a
-              href={SITE.email} // TODO: real email
+              href={SITE.linkedin}
               className="border border-line px-6 py-3 font-medium text-ink transition-colors hover:border-accent hover:text-accent"
             >
               Get in touch

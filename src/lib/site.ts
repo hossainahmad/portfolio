@@ -1,6 +1,6 @@
 export const SITE = {
   name: "Hossain Ahmad",
-  url: "https://hossainahmad.dev", // TODO: swap when the domain is live
+  url: "https://hossainahmad-portfolio.vercel.app/", // TODO: swap when the domain is live
   email: "hossain.ahmad38@gmail.com",
   github: "https://github.com/hossainahmad",
   linkedin: "https://www.linkedin.com/in/hossainahmad-dev/",
