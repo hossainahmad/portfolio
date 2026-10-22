@@ -1,3 +1,4 @@
+"use client";
 import { Container } from "@/components/ui/container";
 import { GitHubIcon, LinkedInIcon } from "@/components/ui/icons";
 import { SITE } from "@/lib/site";

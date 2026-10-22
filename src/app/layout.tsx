@@ -3,6 +3,7 @@ import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import "./globals.css";
+import { Suspense } from "react";
 
 const grotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -43,7 +44,9 @@ export default function RootLayout({
         </a>
         <Navbar />
         <main id="main">{children}</main>
-        <Footer />
+        <Suspense fallback={<div>Loading footer...</div>}>
+          <Footer />
+        </Suspense>
       </body>
     </html>
   );
