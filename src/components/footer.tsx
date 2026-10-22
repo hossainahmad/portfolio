@@ -1,5 +1,6 @@
 import { Container } from "@/components/ui/container";
 import { GitHubIcon, LinkedInIcon } from "@/components/ui/icons";
+import { SITE } from "@/lib/site";
 
 export function Footer() {
   return (
@@ -20,11 +21,11 @@ export function Footer() {
             href="mailto:hello@hossainahmad.dev" // TODO: real email
             className="bg-accent px-6 py-3 font-medium text-black transition-colors hover:bg-accent-bright"
           >
-            hello@hossainahmad.dev
+            {SITE.email}
           </a>
           <div className="flex gap-5">
             <a
-              href="https://github.com/hossainahmad"
+              href={SITE.github}
               target="_blank"
               rel="noreferrer"
               aria-label="GitHub"
@@ -33,7 +34,7 @@ export function Footer() {
               <GitHubIcon />
             </a>
             <a
-              href="https://www.linkedin.com/in/hossainahmad-dev/"
+              href={SITE.linkedin}
               target="_blank"
               rel="noreferrer"
               aria-label="LinkedIn"

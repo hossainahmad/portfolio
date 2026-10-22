@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { ParallaxBackdrop } from "@/components/parallax-backdrop";
 import { Container } from "@/components/ui/container";
 import { Corners } from "@/components/ui/corners";
+import { SITE } from "@/lib/site";
 
 const ROLES = [
   "Full-Stack Web Developer",
@@ -114,7 +115,7 @@ export function Hero() {
               View my work →
             </a>
             <a
-              href="mailto:hello@hossainahmad.dev" // TODO: real email
+              href={SITE.email} // TODO: real email
               className="border border-line px-6 py-3 font-medium text-ink transition-colors hover:border-accent hover:text-accent"
             >
               Get in touch

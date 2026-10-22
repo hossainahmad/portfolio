@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { GitHubIcon } from "@/components/ui/icons";
 import Image from "next/image";
+import { SITE } from "@/lib/site";
 
 const NAV = [
   { href: "/work", label: "Work" },
@@ -54,7 +55,7 @@ export function Navbar() {
           ))}
           <li>
             <a
-              href="mailto:hello@hossainahmad.dev" // TODO: real email
+              href={SITE.email} // TODO: real email
               className="bg-accent px-4 py-2 text-sm font-medium text-black transition-colors hover:bg-accent-bright"
             >
               Contact
@@ -62,7 +63,7 @@ export function Navbar() {
           </li>
           <li>
             <a
-              href="https://github.com/hossainahmad"
+              href="SITE.github"
               target="_blank"
               rel="noreferrer"
               aria-label="GitHub"
